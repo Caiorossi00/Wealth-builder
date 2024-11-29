@@ -3,10 +3,9 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const AddInvestment = ({ fetchInvestments }) => {
-  // Recebe a função fetchInvestments como prop
   const [value, setValue] = useState("");
   const [date, setDate] = useState("");
-  const [error, setError] = useState(""); // Estado para armazenar erros de validação
+  const [error, setError] = useState("");
 
   const validateValue = (value) => {
     if (value <= 0) {
@@ -28,12 +27,11 @@ const AddInvestment = ({ fetchInvestments }) => {
   const handleAddInvestment = async (e) => {
     e.preventDefault();
 
-    // Validações
     const valueError = validateValue(value);
     const dateError = validateDate(date);
 
     if (valueError || dateError) {
-      setError(valueError || dateError); // Exibe o erro de validação
+      setError(valueError || dateError);
       return;
     }
 
@@ -45,16 +43,14 @@ const AddInvestment = ({ fetchInvestments }) => {
       });
       console.log("Documento adicionado com ID: ", docRef.id);
 
-      // Chama a função fetchInvestments para atualizar a lista após adicionar o investimento
       fetchInvestments();
 
-      // Limpa os campos após a adição
       setValue("");
       setDate("");
-      setError(""); // Limpa o erro após a adição bem-sucedida
+      setError("");
     } catch (e) {
       console.error("Erro ao adicionar documento: ", e);
-      setError("Erro ao adicionar o investimento."); // Exibe erro genérico se algo der errado
+      setError("Erro ao adicionar o investimento.");
     }
   };
 
@@ -77,7 +73,6 @@ const AddInvestment = ({ fetchInvestments }) => {
         <button type="submit">Adicionar</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-      {/* Exibe o erro de validação, se houver */}
     </div>
   );
 };

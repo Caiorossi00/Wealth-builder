@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"; // Importe useCallback
+import React, { useState, useEffect, useCallback } from "react";
 import {
   collection,
   getDocs,
@@ -6,24 +6,22 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "../firebase"; // Importando a configuração do Firebase
-import AddInvestment from "./AddTransaction.js"; // Importando o componente de adicionar investimento
+import { db } from "../firebase";
+import AddInvestment from "./AddTransaction.js";
 
 const InvestmentList = () => {
-  const [investments, setInvestments] = useState([]); // Estado para armazenar os investimentos
-  const [editingId, setEditingId] = useState(null); // Armazena o id do investimento sendo editado
-  const [newValue, setNewValue] = useState(""); // Armazena o novo valor a ser atualizado
+  const [investments, setInvestments] = useState([]);
+  const [editingId, setEditingId] = useState(null);
+  const [newValue, setNewValue] = useState("");
 
-  // Função para formatar a data
   const formatDate = (dateString) => {
-    const date = new Date(dateString); // Cria um objeto Date
-    const day = String(date.getDate()).padStart(2, "0"); // Obtém o dia com 2 dígitos
-    const month = String(date.getMonth() + 1).padStart(2, "0"); // Obtém o mês com 2 dígitos
-    const year = date.getFullYear(); // Obtém o ano
-    return `${day}/${month}/${year}`; // Retorna a data no formato "dd/mm/yyyy"
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   };
 
-  // Função para buscar os investimentos do Firestore com useCallback
   const fetchInvestments = useCallback(async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "investimentos"));
@@ -31,11 +29,10 @@ const InvestmentList = () => {
         const data = doc.data();
         let formattedDate = "";
 
-        // Verifica se a data está no formato esperado e a formata
         if (data.data) {
-          formattedDate = formatDate(data.data); // Formata a data
+          formattedDate = formatDate(data.data);
         } else {
-          formattedDate = data.data || "Data inválida"; // Caso a data seja inválida
+          formattedDate = data.data || "Data inválida";
         }
 
         return {
@@ -44,13 +41,12 @@ const InvestmentList = () => {
           data: formattedDate,
         };
       });
-      setInvestments(investmentsArray); // Atualiza o estado com os investimentos
+      setInvestments(investmentsArray);
     } catch (e) {
       console.error("Erro ao buscar documentos: ", e);
     }
-  }, []); // useCallback com array de dependências vazio
+  }, []);
 
-  // Função para excluir um investimento
   const handleDelete = async (id) => {
     try {
       await deleteDoc(doc(db, "investimentos", id));
@@ -60,13 +56,11 @@ const InvestmentList = () => {
     }
   };
 
-  // Função para editar um investimento
   const handleEdit = (id, currentValue) => {
-    setEditingId(id); // Define o investimento a ser editado
-    setNewValue(currentValue); // Define o valor atual no campo de edição
+    setEditingId(id);
+    setNewValue(currentValue);
   };
 
-  // Função para atualizar um investimento
   const handleUpdate = async () => {
     if (!newValue) {
       alert("Por favor, insira um valor!");
@@ -79,10 +73,8 @@ const InvestmentList = () => {
         valor: newValue,
       });
 
-      // Atualiza a lista de investimentos
       fetchInvestments();
 
-      // Limpa os campos de edição
       setEditingId(null);
       setNewValue("");
     } catch (e) {
@@ -90,10 +82,9 @@ const InvestmentList = () => {
     }
   };
 
-  // Usando useEffect para buscar os dados quando o componente for montado
   useEffect(() => {
     fetchInvestments();
-  }, [fetchInvestments]); // Agora fetchInvestments está seguro nas dependências
+  }, [fetchInvestments]);
 
   return (
     <div>

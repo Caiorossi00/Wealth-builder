@@ -1,6 +1,5 @@
-// Home.jsx
 import React from "react";
-import InvestmentList from "../InvestmentList"; // Importando InvestmentList
+import InvestmentList from "../InvestmentList";
 
 const Home = () => {
   return (
