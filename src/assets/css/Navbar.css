@@ -1,0 +1,23 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 10vh;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  padding: 0 2em;
+  color: #92e3a9;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-links li {
+  list-style-type: none;
+}
+
+.nav-links li a {
+  color: #92e3a9;
+}

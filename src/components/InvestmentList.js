@@ -8,11 +8,13 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import AddInvestment from "./AddTransaction.js";
+import "../assets/css/InvestmentList.css";
 
 const InvestmentList = () => {
   const [investments, setInvestments] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [newValue, setNewValue] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -87,35 +89,68 @@ const InvestmentList = () => {
   }, [fetchInvestments]);
 
   return (
-    <div>
-      <AddInvestment fetchInvestments={fetchInvestments} />{" "}
-      <ul>
-        {investments.map((investment) => (
-          <li key={investment.id}>
-            <strong>Valor:</strong> R$ {investment.valor} |{" "}
-            <strong>Data:</strong> {investment.data}{" "}
-            <button onClick={() => handleEdit(investment.id, investment.valor)}>
-              Editar
-            </button>
-            <button onClick={() => handleDelete(investment.id)}>Excluir</button>
-          </li>
-        ))}
-      </ul>
-      {editingId && (
-        <div>
-          <h3>Editar Investimento</h3>
-          <input
-            type="number"
-            value={newValue}
-            onChange={(e) => setNewValue(e.target.value)}
-            placeholder="Novo valor"
-            required
-          />
-          <button onClick={handleUpdate}>Salvar Alterações</button>
-          <button onClick={() => setEditingId(null)}>Cancelar</button>
-        </div>
-      )}
-    </div>
+    <>
+      <div className="container-investment-list">
+        <ul className="investment-list">
+          {investments.map((investment) => (
+            <li key={investment.id}>
+              <div>
+                <strong>R${investment.valor}</strong> {investment.data}
+              </div>
+              <div>
+                <button
+                  onClick={() => handleEdit(investment.id, investment.valor)}
+                  aria-label="Editar"
+                >
+                  ✏️
+                </button>
+                <button
+                  onClick={() => handleDelete(investment.id)}
+                  aria-label="Excluir"
+                >
+                  ❌
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <AddInvestment fetchInvestments={fetchInvestments} />
+              <button
+                className="close-button"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        )}
+
+        {editingId && (
+          <div className="edit-container">
+            <h3>Editar Investimento</h3>
+            <input
+              type="number"
+              value={newValue}
+              onChange={(e) => setNewValue(e.target.value)}
+              placeholder="Novo valor"
+              required
+            />
+            <button onClick={handleUpdate}>Salvar</button>
+            <button onClick={() => setEditingId(null)}>Cancelar</button>
+          </div>
+        )}
+      </div>
+      <button
+        className="add-button-outside"
+        onClick={() => setIsModalOpen(true)}
+      >
+        +
+      </button>
+    </>
   );
 };
 

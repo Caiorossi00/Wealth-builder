@@ -1,0 +1,26 @@
+.home {
+  min-height: 80vh;
+}
+
+.container-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 7vh;
+  gap: 5vh;
+  padding-left: 10vw;
+}
+
+.text-home {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-home h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.text-home p {
+  font-size: 1em;
+}

@@ -1,12 +1,15 @@
-// App.jsx
 import React from "react";
-import Home from "./components/routes/Home"; // Importando o Home
+import Home from "./components/routes/Home";
+import Navbar from "./components/Navbar";
+import "./App.css";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <div className="App">
-      <Home />{" "}
-      {/* Renderizando o Home que já contém os outros dois componentes */}
+      <Navbar />
+      <Home />
+      <Footer />
     </div>
   );
 };
