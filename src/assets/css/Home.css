@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 7%;
   min-height: 65vh;
-  margin-top: 9vh;
+  margin-top: 10vh;
 }
 
 .home-left-side {
@@ -39,7 +39,8 @@
 .star-right {
   height: 12vh;
   width: fit-content;
-  margin-top: -3vh;
+  margin-top: -4vh;
+  animation: rotate 50s linear infinite;
 }
 
 .piggy-right {
