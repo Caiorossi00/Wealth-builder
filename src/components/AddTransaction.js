@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import "../assets/css/AddTransaction.css";
 
 const AddInvestment = ({ fetchInvestments }) => {
   const [value, setValue] = useState("");
@@ -70,7 +71,9 @@ const AddInvestment = ({ fetchInvestments }) => {
           onChange={(e) => setDate(e.target.value)}
           required
         />
-        <button type="submit">Adicionar</button>
+        <button type="submit" className="add-btn">
+          Adicionar
+        </button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}{" "}
     </div>

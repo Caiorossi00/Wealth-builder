@@ -94,21 +94,21 @@ const InvestmentList = () => {
         <ul className="investment-list">
           {investments.map((investment) => (
             <li key={investment.id}>
-              <div>
+              <div className="investment-data">
                 <strong>R${investment.valor}</strong> {investment.data}
               </div>
-              <div>
+              <div className="investment-icons">
                 <button
                   onClick={() => handleEdit(investment.id, investment.valor)}
                   aria-label="Editar"
                 >
-                  ✏️
+                  <i class="fa-solid fa-pencil"></i>
                 </button>
                 <button
                   onClick={() => handleDelete(investment.id)}
                   aria-label="Excluir"
                 >
-                  ❌
+                  <i class="fa-solid fa-delete-left"></i>
                 </button>
               </div>
             </li>
@@ -118,20 +118,20 @@ const InvestmentList = () => {
         {isModalOpen && (
           <div className="modal-overlay">
             <div className="modal-content">
-              <AddInvestment fetchInvestments={fetchInvestments} />
               <button
                 className="close-button"
                 onClick={() => setIsModalOpen(false)}
               >
-                Fechar
+                &times;
               </button>
+              <AddInvestment fetchInvestments={fetchInvestments} />
             </div>
           </div>
         )}
 
         {editingId && (
           <div className="edit-container">
-            <h3>Editar Investimento</h3>
+            <h3>Editar Aporte</h3>
             <input
               type="number"
               value={newValue}
