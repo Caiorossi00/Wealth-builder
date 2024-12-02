@@ -1,39 +1,12 @@
 import React, { useState } from "react";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
-import "../../assets/css/Login.css";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import revenueBro from "../../assets/images/revenue-bro.svg";
+import "../../assets/css/Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [setError] = useState("");
   const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!email || !password) {
-      setError("Por favor, preencha todos os campos.");
-      return;
-    }
-
-    const auth = getAuth();
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      setEmail("");
-      setPassword("");
-      setError("");
-      navigate("/home");
-    } catch (err) {
-      setError("Erro ao fazer login. Verifique as credenciais.");
-    }
-  };
 
   const handleGoogleLogin = async () => {
     const auth = getAuth();
@@ -49,34 +22,21 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        {error && <p className="error-message">{error}</p>}
-        <div>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite seu e-mail"
-            required
-          />
+      <div className="login-left-container">
+        <h1>Login</h1>
+        <p>Entrar com Google</p>
+        <div className="google-login">
+          <button onClick={handleGoogleLogin} className="google-login-button">
+            <i className="fab fa-google"></i>
+          </button>
         </div>
-        <div>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Digite sua senha"
-            required
-          />
-        </div>
-        <button type="submit">Entrar</button>
-      </form>
-
-      <div className="google-login">
-        <button onClick={handleGoogleLogin}>Entrar com Google</button>
+      </div>
+      <div className="login-right-container">
+        <img
+          src={revenueBro}
+          alt="Ilustração de um homem com um notebook"
+          className="revenueBro"
+        />
       </div>
     </div>
   );

@@ -1,25 +1,60 @@
 .login-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 65vh;
+  height: 75vh;
+  gap: 10%;
 }
 
-.login-form {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.login-left-container {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  gap: 1em;
+  height: 50vh;
+  align-items: center;
+  justify-content: center;
 }
 
-.login-form div {
-  margin-bottom: 15px;
+.login-left-container h1 {
+  font-size: 3em;
+  font-weight: bold;
 }
 
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
+.login-right-container {
+  height: 50vh;
+  display: flex;
+  align-items: flex-end;
+}
+
+.google-login {
+  padding: 2em 4em;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.google-login-button {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.google-login-button:hover {
+  background-color: #f0f0f0;
+}
+
+.google-login-button i {
+  color: #4285f4;
+}
+
+.revenueBro {
+  height: 50vh;
 }
