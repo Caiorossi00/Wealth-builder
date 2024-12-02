@@ -43,6 +43,8 @@ const InvestmentList = () => {
           data: formattedDate,
         };
       });
+
+      console.log("Investimentos recuperados:", investmentsArray); // Adicionado para verificar os dados
       setInvestments(investmentsArray);
     } catch (e) {
       console.error("Erro ao buscar documentos: ", e);
@@ -64,15 +66,15 @@ const InvestmentList = () => {
   };
 
   const handleUpdate = async () => {
-    if (!newValue) {
-      alert("Por favor, insira um valor!");
+    if (!newValue || isNaN(newValue) || Number(newValue) <= 0) {
+      alert("Por favor, insira um valor válido!");
       return;
     }
 
     try {
       const investmentRef = doc(db, "investimentos", editingId);
       await updateDoc(investmentRef, {
-        valor: newValue,
+        valor: Number(newValue),
       });
 
       fetchInvestments();

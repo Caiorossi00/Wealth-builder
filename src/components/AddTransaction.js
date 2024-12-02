@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import { db } from "../firebase";
 import "../assets/css/AddTransaction.css";
 
@@ -9,19 +10,13 @@ const AddInvestment = ({ fetchInvestments }) => {
   const [error, setError] = useState("");
 
   const validateValue = (value) => {
-    if (value <= 0) {
-      return "O valor não pode ser negativo ou zero.";
-    }
+    if (value <= 0) return "O valor não pode ser negativo ou zero.";
     return "";
   };
 
   const validateDate = (date) => {
     const year = new Date(date).getFullYear();
-
-    if (year < 2000 || year > 2099) {
-      return "Ajuste o ano";
-    }
-
+    if (year < 2000 || year > 2099) return "Ajuste o ano";
     return "";
   };
 
@@ -36,16 +31,24 @@ const AddInvestment = ({ fetchInvestments }) => {
       return;
     }
 
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      setError("Você precisa estar logado para adicionar um investimento.");
+      return;
+    }
+
+    const userId = user.uid;
+
     try {
-      const docRef = await addDoc(collection(db, "investimentos"), {
+      await addDoc(collection(db, "investimentos"), {
         data: date,
         tipo: "Aporte",
         valor: value,
+        userId: userId,
       });
-      console.log("Documento adicionado com ID: ", docRef.id);
-
       fetchInvestments();
-
       setValue("");
       setDate("");
       setError("");
@@ -75,7 +78,7 @@ const AddInvestment = ({ fetchInvestments }) => {
           Adicionar
         </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

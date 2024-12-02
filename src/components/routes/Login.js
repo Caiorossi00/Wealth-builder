@@ -53,7 +53,6 @@ const Login = () => {
       <form onSubmit={handleSubmit} className="login-form">
         {error && <p className="error-message">{error}</p>}
         <div>
-          <label htmlFor="email">E-mail:</label>
           <input
             type="email"
             id="email"
@@ -64,7 +63,6 @@ const Login = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Senha:</label>
           <input
             type="password"
             id="password"
