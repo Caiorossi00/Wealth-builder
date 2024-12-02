@@ -5,7 +5,7 @@ import revenueBro from "../../assets/images/revenue-bro.svg";
 import "../../assets/css/Login.css";
 
 const Login = () => {
-  const [setError] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleGoogleLogin = async () => {
@@ -24,6 +24,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-left-container">
         <h1>Login</h1>
+        {error && <p className="error-message">{error}</p>}
         <p>Entrar com Google</p>
         <div className="google-login">
           <button onClick={handleGoogleLogin} className="google-login-button">
