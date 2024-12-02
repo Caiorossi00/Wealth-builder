@@ -54,7 +54,7 @@ const Home = () => {
         <div className="home-left-side">
           <div className="text-home">
             <h1>Wealth Builder</h1>
-            <p>Construa seu patrimônio lorem ipsum.</p>
+            <p>Viva enquanto seu dinheiro hiberna.</p>
           </div>
           {loading ? (
             <p>Carregando investimentos...</p>
