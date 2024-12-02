@@ -5,8 +5,11 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import { getAuth } from "firebase/auth";
 import AddInvestment from "./AddTransaction.js";
 import "../assets/css/InvestmentList.css";
 
@@ -25,8 +28,21 @@ const InvestmentList = () => {
   };
 
   const fetchInvestments = useCallback(async () => {
+    const auth = getAuth();
+    const userId = auth.currentUser?.uid;
+
+    if (!userId) {
+      console.error("Usuário não autenticado");
+      return;
+    }
+
     try {
-      const querySnapshot = await getDocs(collection(db, "investimentos"));
+      const q = query(
+        collection(db, "investimentos"),
+        where("userId", "==", userId)
+      );
+
+      const querySnapshot = await getDocs(q);
       const investmentsArray = querySnapshot.docs.map((doc) => {
         const data = doc.data();
         let formattedDate = "";
@@ -44,7 +60,6 @@ const InvestmentList = () => {
         };
       });
 
-      console.log("Investimentos recuperados:", investmentsArray); // Adicionado para verificar os dados
       setInvestments(investmentsArray);
     } catch (e) {
       console.error("Erro ao buscar documentos: ", e);
@@ -104,13 +119,13 @@ const InvestmentList = () => {
                   onClick={() => handleEdit(investment.id, investment.valor)}
                   aria-label="Editar"
                 >
-                  <i class="fa-solid fa-pencil"></i>
+                  <i className="fa-solid fa-pencil"></i>
                 </button>
                 <button
                   onClick={() => handleDelete(investment.id)}
                   aria-label="Excluir"
                 >
-                  <i class="fa-solid fa-delete-left"></i>
+                  <i className="fa-solid fa-delete-left"></i>
                 </button>
               </div>
             </li>
