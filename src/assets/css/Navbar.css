@@ -19,6 +19,7 @@
 .nav-links {
   display: flex;
   flex-direction: row;
+  gap: 1.5em;
 }
 
 .nav-links li {
@@ -27,4 +28,5 @@
 
 .nav-links li a {
   color: #92e3a9;
+  text-decoration: none;
 }
