@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import WBLogo from "../assets/images/WealthBuilderLogo.png";
 import "../assets/css/Navbar.css";
 
@@ -19,9 +19,29 @@ function Navbar() {
       </div>
       <ul className="nav-links">
         {location.pathname !== "/" && (
-          <li>
-            <a href="/">Sair</a>
-          </li>
+          <>
+            {location.pathname === "/home" && (
+              <>
+                <li>
+                  <Link to="/aportes">Aportes</Link>
+                </li>
+                <li>
+                  <a href="/">Sair</a>
+                </li>
+              </>
+            )}
+
+            {location.pathname === "/aportes" && (
+              <>
+                <li>
+                  <Link to="/home">Home</Link>
+                </li>
+                <li>
+                  <a href="/">Sair</a>
+                </li>
+              </>
+            )}
+          </>
         )}
       </ul>
     </nav>

@@ -1,0 +1,35 @@
+.container-month-aportes {
+  height: 73vh;
+}
+
+.month-navigation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.month-navigation button {
+  font-size: 18px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.month-navigation span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.aportes-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.aportes-list li {
+  margin-bottom: 10px;
+}
+
+.aportes-list .aporte-data {
+  font-size: 16px;
+  font-weight: bold;
+}
