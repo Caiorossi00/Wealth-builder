@@ -26,6 +26,9 @@ function Navbar() {
                   <Link to="/aportes">Aportes</Link>
                 </li>
                 <li>
+                  <Link to="/checkin">Check-in</Link>{" "}
+                </li>
+                <li>
                   <a href="/">Sair</a>
                 </li>
               </>
@@ -35,6 +38,23 @@ function Navbar() {
               <>
                 <li>
                   <Link to="/home">Home</Link>
+                </li>
+                <li>
+                  <Link to="/checkin">Check-in</Link>{" "}
+                </li>
+                <li>
+                  <a href="/">Sair</a>
+                </li>
+              </>
+            )}
+
+            {location.pathname === "/checkin" && (
+              <>
+                <li>
+                  <Link to="/home">Home</Link>
+                </li>
+                <li>
+                  <Link to="/aportes">Aportes</Link>
                 </li>
                 <li>
                   <a href="/">Sair</a>
