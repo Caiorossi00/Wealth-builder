@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 import { db } from "../firebase";
 import "../assets/css/AddTransaction.css";
 
-const AddInvestment = ({ fetchInvestments }) => {
+const AddInvestment = ({ fetchInvestments, setIsModalOpen }) => {
   const [value, setValue] = useState("");
   const [date, setDate] = useState("");
   const [error, setError] = useState("");
@@ -52,6 +52,7 @@ const AddInvestment = ({ fetchInvestments }) => {
       setValue("");
       setDate("");
       setError("");
+      setIsModalOpen(false);
     } catch (e) {
       console.error("Erro ao adicionar documento: ", e);
       setError("Erro ao adicionar o investimento.");

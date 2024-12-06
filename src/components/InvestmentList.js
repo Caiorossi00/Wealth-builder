@@ -21,10 +21,19 @@ const InvestmentList = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
+    const localDate = new Date(
+      date.getTime() + date.getTimezoneOffset() * 60000
+    );
+
+    const day = String(localDate.getDate()).padStart(2, "0");
+    const month = String(localDate.getMonth() + 1).padStart(2, "0");
+    const year = localDate.getFullYear();
+
     return `${day}/${month}/${year}`;
+  };
+
+  const formatValue = (value) => {
+    return parseFloat(value).toFixed(2).replace(".", ",");
   };
 
   const fetchInvestments = useCallback(async () => {
@@ -56,9 +65,15 @@ const InvestmentList = () => {
         return {
           id: doc.id,
           ...data,
+          valor: formatValue(data.valor),
           data: formattedDate,
+          rawDate: data.data,
         };
       });
+
+      investmentsArray.sort(
+        (a, b) => new Date(b.rawDate) - new Date(a.rawDate)
+      );
 
       setInvestments(investmentsArray);
     } catch (e) {
@@ -77,7 +92,7 @@ const InvestmentList = () => {
 
   const handleEdit = (id, currentValue) => {
     setEditingId(id);
-    setNewValue(currentValue);
+    setNewValue(currentValue.replace(",", "."));
   };
 
   const handleUpdate = async () => {
@@ -141,7 +156,10 @@ const InvestmentList = () => {
               >
                 &times;
               </button>
-              <AddInvestment fetchInvestments={fetchInvestments} />
+              <AddInvestment
+                fetchInvestments={fetchInvestments}
+                setIsModalOpen={setIsModalOpen}
+              />
             </div>
           </div>
         )}

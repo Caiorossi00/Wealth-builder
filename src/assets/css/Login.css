@@ -28,9 +28,13 @@
 }
 
 .google-login {
-  padding: 2em 4em;
+  width: 25vw;
+  height: 28vh;
   background-color: white;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .google-login-button {

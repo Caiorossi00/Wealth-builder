@@ -1,8 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import WBLogo from "../assets/images/WealthBuilderLogo.png";
 import "../assets/css/Navbar.css";
 
 function Navbar() {
+  const location = useLocation();
+
   return (
     <nav className="navbar">
       <div className="logo">
@@ -15,9 +18,11 @@ function Navbar() {
         </a>
       </div>
       <ul className="nav-links">
-        <li>
-          <a href="/">Sair</a>
-        </li>
+        {location.pathname !== "/" && (
+          <li>
+            <a href="/">Sair</a>
+          </li>
+        )}
       </ul>
     </nav>
   );

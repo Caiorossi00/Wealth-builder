@@ -2,7 +2,7 @@
   background-color: white;
   border-radius: 12px;
   padding: 20px;
-  width: 300px;
+  width: 500px;
   min-height: 30vh;
   max-height: 30vh;
   overflow-y: auto;
@@ -115,6 +115,7 @@
   cursor: pointer;
   margin: 5px;
   margin-bottom: 15px;
+  font-family: inherit;
 }
 
 .edit-container button:hover {
