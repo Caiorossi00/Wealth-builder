@@ -1,23 +1,43 @@
 .container-month-aportes {
-  height: 73vh;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  min-height: 45vh;
 }
 
 .month-navigation {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 
 .month-navigation button {
-  font-size: 18px;
-  padding: 5px 10px;
-  margin: 0 10px;
+  background-color: #92e3a9;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: inherit;
 }
 
-.month-navigation span {
-  font-size: 18px;
-  font-weight: bold;
+.month-navigation button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.month-navigation h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
 }
 
 .aportes-list {
@@ -26,10 +46,25 @@
 }
 
 .aportes-list li {
-  margin-bottom: 10px;
+  padding: 1em;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.aportes-list .aporte-data {
-  font-size: 16px;
+.aporte-data {
+  font-size: 1em;
   font-weight: bold;
+  color: #333;
+}
+
+.aporte-data strong {
+  color: #92e3a9;
+}
+
+.total-aportes {
+  margin-top: 1em;
+  text-align: right;
+  font-weight: bold;
+  color: #707070;
 }
