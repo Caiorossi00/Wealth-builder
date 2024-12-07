@@ -3,7 +3,6 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 import { db } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "../../assets/css/MonthAportes.css";
-import EstatisticasAportes from "../EstatisticasAportes";
 
 const MonthAportes = () => {
   const [aportes, setAportes] = useState([]);
@@ -193,7 +192,6 @@ const MonthAportes = () => {
           </div>
         </>
       )}
-      <EstatisticasAportes aportes={aportes} />
     </div>
   );
 };

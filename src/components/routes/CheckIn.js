@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../assets/css/CheckIn.css";
 
 const CheckIn = () => {
   const [valorInicial, setValorInicial] = useState("");
@@ -21,12 +22,10 @@ const CheckIn = () => {
     "Dezembro",
   ];
 
-  const anos = [];
-  for (let i = 2010; i <= new Date().getFullYear(); i++) {
-    anos.push(i);
-  }
-
-  anos.reverse();
+  const anos = Array.from(
+    { length: new Date().getFullYear() - 2009 },
+    (_, i) => 2010 + i
+  ).reverse();
 
   const handleSubmit = (event) => {
     event.preventDefault();
