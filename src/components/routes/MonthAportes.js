@@ -147,6 +147,10 @@ const MonthAportes = () => {
     }
   }, [authLoading, fetchAportes]);
 
+  const totalAportes = useMemo(() => {
+    return aportes.reduce((acc, aporte) => acc + parseFloat(aporte.valor), 0);
+  }, [aportes]);
+
   return (
     <div className="container-month-aportes">
       {authLoading || loading ? (
@@ -183,6 +187,9 @@ const MonthAportes = () => {
               <p>Nenhum aporte encontrado para este mês.</p>
             )}
           </ul>
+          <div className="total-aportes">
+            <strong>Soma total: R${formatCurrency(totalAportes)}</strong>
+          </div>
         </>
       )}
     </div>

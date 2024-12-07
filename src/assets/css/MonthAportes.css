@@ -61,3 +61,10 @@
 .aporte-data strong {
   color: #92e3a9;
 }
+
+.total-aportes {
+  margin-top: 1em;
+  text-align: right;
+  font-weight: bold;
+  color: #707070;
+}
