@@ -73,8 +73,16 @@ const MonthAportes = () => {
         ...doc.data(),
       }));
 
-      const months = aportesArray.map((aporte) => formatMonthYear(aporte.data));
-      const uniqueMonths = [...new Set(months)];
+      const months = aportesArray.map((aporte) => ({
+        date: new Date(aporte.data),
+        label: formatMonthYear(aporte.data),
+      }));
+
+      const uniqueMonths = [
+        ...new Map(months.map((m) => [m.label, m])).values(),
+      ]
+        .sort((a, b) => b.date - a.date)
+        .map((m) => m.label);
 
       setAvailableMonths(uniqueMonths);
 
