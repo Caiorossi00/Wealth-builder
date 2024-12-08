@@ -3,14 +3,14 @@
   flex-direction: row;
   justify-content: center;
   gap: 15%;
-  min-height: 65vh;
-  margin-top: 10vh;
+  min-height: 63vh;
+  margin-top: 9vh;
 }
 
 .home-left-side {
   display: flex;
   flex-direction: column;
-  gap: 5vh;
+  gap: 3vh;
 }
 
 .text-home {

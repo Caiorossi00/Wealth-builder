@@ -74,8 +74,6 @@
   font-size: 34px;
   border: none;
   cursor: pointer;
-  margin-top: -3vh;
-  margin-bottom: 5vh;
 }
 
 .add-button-outside:hover {
@@ -173,4 +171,21 @@
 
 .close-button:hover {
   color: black;
+}
+
+.add-investment-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -1vh;
+}
+
+.total-invested {
+  background-image: radial-gradient(circle at top left, #719b7a, #94b9ff);
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid white;
 }

@@ -188,7 +188,7 @@ const MonthAportes = () => {
             )}
           </ul>
           <div className="total-aportes">
-            <strong>Soma total: R${formatCurrency(totalAportes)}</strong>
+            <strong>Total: R${formatCurrency(totalAportes)}</strong>
           </div>
         </>
       )}

@@ -15,6 +15,7 @@ import "../assets/css/InvestmentList.css";
 
 const InvestmentList = () => {
   const [investments, setInvestments] = useState([]);
+  const [totalInvested, setTotalInvested] = useState(0);
   const [editingId, setEditingId] = useState(null);
   const [newValue, setNewValue] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,7 +53,10 @@ const InvestmentList = () => {
       );
 
       const querySnapshot = await getDocs(q);
-      const investmentsArray = querySnapshot.docs.map((doc) => {
+      const investmentsArray = [];
+      let total = 0;
+
+      querySnapshot.forEach((doc) => {
         const data = doc.data();
         let formattedDate = "";
 
@@ -62,13 +66,15 @@ const InvestmentList = () => {
           formattedDate = data.data || "Data inválida";
         }
 
-        return {
+        total += parseFloat(data.valor || 0);
+
+        investmentsArray.push({
           id: doc.id,
           ...data,
           valor: formatValue(data.valor),
           data: formattedDate,
           rawDate: data.data,
-        };
+        });
       });
 
       investmentsArray.sort(
@@ -76,6 +82,7 @@ const InvestmentList = () => {
       );
 
       setInvestments(investmentsArray);
+      setTotalInvested(total);
     } catch (e) {
       console.error("Erro ao buscar documentos: ", e);
     }
@@ -179,12 +186,17 @@ const InvestmentList = () => {
           </div>
         )}
       </div>
-      <button
-        className="add-button-outside"
-        onClick={() => setIsModalOpen(true)}
-      >
-        +
-      </button>
+      <div className="add-investment-container">
+        <button
+          className="add-button-outside"
+          onClick={() => setIsModalOpen(true)}
+        >
+          +
+        </button>
+        <p className="total-invested">
+          Total investido: R${totalInvested.toFixed(2).replace(".", ",")}
+        </p>
+      </div>
     </>
   );
 };
