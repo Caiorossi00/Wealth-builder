@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "Agrandir";
+  src: url("../src/assets/fonts/Agrandir-Regular.otf") format("opentype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #92e3a9;
+  color: white;
+  font-family: "Agrandir", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
 html,
 body,
 div,
@@ -121,21 +138,4 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-@font-face {
-  font-family: "Agrandir";
-  src: url("../src/assets/fonts/Agrandir-Regular.otf") format("opentype");
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #92e3a9;
-  color: white;
-  font-family: "Agrandir", sans-serif;
-}
-
-a {
-  text-decoration: none;
 }
