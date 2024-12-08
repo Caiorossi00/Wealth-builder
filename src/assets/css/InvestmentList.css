@@ -21,6 +21,15 @@
   background-color: #888888;
 }
 
+.investment-info-header {
+  display: flex;
+  width: 52%;
+  justify-content: space-between;
+  padding-left: 3px;
+  color: grey;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
 .investment-list {
   list-style: none;
   padding: 0;

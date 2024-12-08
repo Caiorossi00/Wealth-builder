@@ -130,6 +130,10 @@ const InvestmentList = () => {
   return (
     <>
       <div className="container-investment-list">
+        <div className="investment-info-header">
+          <p>Valor</p>
+          <p>Data</p>
+        </div>
         <ul className="investment-list">
           {investments.map((investment) => (
             <li key={investment.id}>
