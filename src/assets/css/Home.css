@@ -47,3 +47,39 @@
 .piggy-right {
   height: 35vh;
 }
+
+@media (max-width: 768px) {
+  .container-home {
+    flex-direction: column;
+    min-height: auto;
+    margin-top: 4vh;
+  }
+
+  .home-left-side {
+    gap: 2vh;
+    margin: 2vh 5%;
+  }
+
+  .text-home h1 {
+    font-size: 2em;
+  }
+
+  .text-home p {
+    font-size: 0.9em;
+  }
+
+  .home-right-side {
+    align-items: center;
+    margin-top: 0;
+    justify-content: center;
+    height: 40vh;
+  }
+
+  .star-right {
+    display: none;
+  }
+
+  .piggy-right {
+    height: 34vh;
+  }
+}
