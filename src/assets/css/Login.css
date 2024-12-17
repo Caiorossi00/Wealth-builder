@@ -62,3 +62,45 @@
 .revenueBro {
   height: 50vh;
 }
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+    height: auto;
+    margin-top: 5vh;
+    gap: 5%;
+  }
+
+  .login-left-container {
+    height: auto;
+    gap: 1em;
+  }
+
+  .login-left-container h1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .login-right-container {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .google-login {
+    width: 80vw;
+    height: 10vh;
+  }
+
+  .google-login-button {
+    padding: 8px;
+    font-size: 25spx;
+  }
+
+  .revenueBro {
+    height: 40vh;
+    margin-top: 2vh;
+    margin-bottom: 7vh;
+  }
+}
