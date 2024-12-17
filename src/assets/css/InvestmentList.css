@@ -198,3 +198,47 @@
   font-weight: bold;
   border: 1px solid white;
 }
+
+@media (max-width: 768px) {
+  .container-investment-list {
+    width: 90%;
+    min-height: auto;
+    max-height: 60vh;
+  }
+
+  .investment-info-header {
+    width: 100%;
+    font-size: 10px;
+  }
+
+  .investment-list {
+    font-size: 12px;
+  }
+
+  .add-button-outside {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .edit-container {
+    padding-top: 0.5em;
+  }
+
+  .edit-container input {
+    width: 60%;
+    font-size: 13px;
+  }
+
+  .edit-container button {
+    padding: 8px 12px;
+    font-size: 13px;
+    margin: 3px;
+  }
+
+  .modal-content {
+    padding: 15px 30px 0px 30px;
+    font-size: 13px;
+    margin: 5%;
+  }
+}
