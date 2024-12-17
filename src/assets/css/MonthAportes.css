@@ -69,3 +69,33 @@
   font-weight: bold;
   color: #707070;
 }
+
+@media (max-width: 768px) {
+  .container-month-aportes {
+    width: 80%;
+    padding: 1em;
+    min-height: 60vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+
+  .month-navigation {
+    gap: 0.5em;
+  }
+
+  .month-navigation h2 {
+    font-size: 1em;
+  }
+
+  .aportes-list li {
+    padding: 0.7em;
+  }
+
+  .aporte-data {
+    font-size: 0.9em;
+  }
+
+  .total-aportes {
+    font-size: 0.9em;
+  }
+}
