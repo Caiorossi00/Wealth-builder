@@ -30,3 +30,21 @@
   color: #92e3a9;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1em;
+    text-align: center;
+    gap: 1em;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .nav-links li a {
+    font-size: 16px;
+  }
+}
